@@ -1,4 +1,4 @@
-package com.anys34.tripcord.global;
+package com.anys34.tripcord.global.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
