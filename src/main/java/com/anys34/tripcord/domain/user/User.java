@@ -24,4 +24,11 @@ public class User {
 
     @Column(name = "profile_img", nullable = false)
     private String profileImg;
+
+    public User(String email, String nickname, String password) {
+        this.email = email;
+        this.nickname = nickname;
+        this.password = password;
+        this.profileImg = "기본 이미지 링크";
+    }
 }
