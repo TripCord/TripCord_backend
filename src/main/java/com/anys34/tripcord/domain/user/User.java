@@ -14,15 +14,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true)
     private String email;
 
-    @Column(nullable = false)
     private String nickname;
 
     private String password;
 
-    @Column(name = "profile_img", nullable = false)
+    @Column(name = "profile_img")
     private String profileImg;
 
     public User(String email, String nickname, String password) {
