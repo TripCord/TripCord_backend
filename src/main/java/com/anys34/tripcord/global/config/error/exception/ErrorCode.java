@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 public enum ErrorCode {
 
     USER_DUPLICATE(HttpStatus.BAD_REQUEST, "User Duplicate"),
+    USER_NOT_MATCH(HttpStatus.BAD_REQUEST, "User Duplicate"),
+    USER_INCORRECT(HttpStatus.BAD_REQUEST, "User Incorrect"),
 
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "User Not Found"),
 
