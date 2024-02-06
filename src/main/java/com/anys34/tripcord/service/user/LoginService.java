@@ -5,11 +5,11 @@ import com.anys34.tripcord.dto.user.LoginRequest;
 import com.anys34.tripcord.dto.user.ProfileResponse;
 import com.anys34.tripcord.exception.user.UserIncorrectException;
 import com.anys34.tripcord.facade.user.UserFacade;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Service
@@ -18,7 +18,7 @@ public class LoginService {
     private final UserFacade userFacade;
     private final PasswordEncoder passwordEncoder;
 
-    @Transactional
+    @Transactional(readOnly = true)
     public ProfileResponse execute(LoginRequest loginRequest) {
         User user = userFacade.getUserByEmail(loginRequest.getEmail());
 
