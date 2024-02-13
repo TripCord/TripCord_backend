@@ -32,3 +32,10 @@ auth:
     client-id: ${KAKAO_CLIENT}
     javascript-id: ${KAKAO_JAVASCRIPT}
     redirect-url: ${KAKAO_REDIRECT}
+
+jwt:
+  refresh-time: 2592000000 # 30일
+  access-time: 3600000 # 1시간
+  prefix: Bearer
+  header: Authorization
+  secret-key: ${JWT_SECRET}
