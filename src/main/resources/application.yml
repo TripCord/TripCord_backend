@@ -21,3 +21,14 @@ spring:
     redis:
       host: ${REDIS_HOST}
       port: ${REDIS_PORT}
+
+auth:
+  google:
+    base-url: ${GOOGLE_BASE_URL}
+    client-id: ${GOOGLE_CLIENT}
+    redirect-url: ${GOOGLE_REDIRECT}
+  kakao:
+    base-url: ${KAKAO_BASE_URL}
+    client-id: ${KAKAO_CLIENT}
+    javascript-id: ${KAKAO_JAVASCRIPT}
+    redirect-url: ${KAKAO_REDIRECT}
