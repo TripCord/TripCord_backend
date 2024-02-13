@@ -1,7 +1,9 @@
 package com.anys34.tripcord.domain.user;
 
+import com.anys34.tripcord.type.user.Provider;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -24,10 +26,14 @@ public class User {
     @Column(name = "profile_img")
     private String profileImg;
 
-    public User(String email, String nickname, String password) {
+    private Provider provider;
+
+    @Builder
+    public User(String email, String nickname, String password, String profileImg, Provider provider) {
         this.email = email;
         this.nickname = nickname;
         this.password = password;
-        this.profileImg = "기본 이미지 링크";
+        this.profileImg = profileImg;
+        this.provider = provider;
     }
 }
