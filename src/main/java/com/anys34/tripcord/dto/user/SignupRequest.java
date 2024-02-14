@@ -1,6 +1,7 @@
 package com.anys34.tripcord.dto.user;
 
 import com.anys34.tripcord.domain.user.User;
+import com.anys34.tripcord.type.user.Provider;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -23,7 +24,7 @@ public class SignupRequest {
     private String password;
 
     public User toEntity() {
-        return new User(email, nickname, password);
+        return new User(email, nickname, password, "기본 이미지", Provider.LOCAL);
     }
 
     public void passwordUpdate(String password) {
