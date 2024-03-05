@@ -32,8 +32,8 @@ public class UserController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
-    public TokenResponse signUp(@RequestBody @Valid SignupRequest signUpRequest) {
-        return signupService.execute(signUpRequest);
+    public void signUp(@RequestBody @Valid SignupRequest signUpRequest) {
+        signupService.execute(signUpRequest);
     }
 
     @PostMapping("/email")
