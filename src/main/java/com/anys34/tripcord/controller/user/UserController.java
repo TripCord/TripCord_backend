@@ -1,5 +1,6 @@
 package com.anys34.tripcord.controller.user;
 
+import com.anys34.tripcord.dto.auth.res.TokenResponse;
 import com.anys34.tripcord.dto.user.*;
 import com.anys34.tripcord.service.user.EmailDuplicationService;
 import com.anys34.tripcord.service.user.LoginService;
@@ -25,14 +26,14 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ProfileResponse login(@RequestBody @Valid LoginRequest loginRequest) {
+    public TokenResponse login(@RequestBody @Valid LoginRequest loginRequest) {
         return loginService.execute(loginRequest);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
-    public void signUp(@RequestBody @Valid SignupRequest signUpRequest) {
-        signupService.execute(signUpRequest);
+    public TokenResponse signUp(@RequestBody @Valid SignupRequest signUpRequest) {
+        return signupService.execute(signUpRequest);
     }
 
     @PostMapping("/email")
