@@ -14,6 +14,7 @@ public enum ErrorCode {
     EXPIRED_JWT(HttpStatus.UNAUTHORIZED, "Expired Jwt"), // 만료된 JWT
 
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "User Not Found"), // 유저를 찾을 수 없음
+    FOLLOW_NOT_FOUND(HttpStatus.NOT_FOUND, "Follow Not Found"), // 팔로우한 기록을 찾을 수 없음
 
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "Internal Server Error");
 
