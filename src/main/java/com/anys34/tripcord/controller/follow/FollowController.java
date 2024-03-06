@@ -1,10 +1,12 @@
 package com.anys34.tripcord.controller.follow;
 
 import com.anys34.tripcord.domain.follow.Follow;
+import com.anys34.tripcord.dto.follow.AddFollowRequest;
 import com.anys34.tripcord.service.follow.DeleteFollowService;
 import com.anys34.tripcord.service.follow.GetFromUserFollowService;
 import com.anys34.tripcord.service.follow.GetToUserFollowService;
 import com.anys34.tripcord.service.follow.PostFollowService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -22,20 +24,20 @@ public class FollowController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void addFollow(@RequestParam("email") String email) { addFollowService.execute(email); }
+    public void addFollow(@RequestBody @Valid AddFollowRequest request) { addFollowService.execute(request.getEmail()); }
 
     @GetMapping("/to")
-    public List<Follow> getToUserFollow(@RequestParam("email") String email) {
-        return getToUserFollowService.execute(email);
+    public List<Follow> getToUserFollow(@RequestBody @Valid AddFollowRequest request) {
+        return getToUserFollowService.execute(request.getEmail());
     }
 
     @GetMapping("/from")
-    public List<Follow> getFromUserFollow(@RequestParam("email") String email) {
-        return getFromUserFollowService.execute(email);
+    public List<Follow> getFromUserFollow(@RequestBody @Valid AddFollowRequest request) {
+        return getFromUserFollowService.execute(request.getEmail());
     }
 
     @DeleteMapping
-    public void deleteFollow(@RequestParam("email") String email) {
-        deleteFollowService.execute(email);
+    public void deleteFollow(@RequestBody @Valid AddFollowRequest request) {
+        deleteFollowService.execute(request.getEmail());
     }
 }
