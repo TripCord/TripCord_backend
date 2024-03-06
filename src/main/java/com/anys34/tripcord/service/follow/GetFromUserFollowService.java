@@ -19,7 +19,7 @@ public class GetFromUserFollowService {
     private final UserFacade userFacade;
 
     @Transactional(readOnly = true)
-    public Optional<List<Follow>> execute(String email) {
+    public List<Follow> execute(String email) {
         if(email == null || userFacade.getUserByEmail(email) == null) throw UserNotFoundException.EXCEPTION;
         User user = userFacade.getUserByEmail(email);
         return followRepository.findAllByFromUser(user);

@@ -26,12 +26,12 @@ public class FollowController {
     public void addFollow(@RequestParam("email") String email) { addFollowService.execute(email); }
 
     @GetMapping("/to")
-    public Optional<List<Follow>> getToUserFollow(@RequestParam("email") String email) {
+    public List<Follow> getToUserFollow(@RequestParam("email") String email) {
         return getToUserFollowService.execute(email);
     }
 
     @GetMapping("/from")
-    public Optional<List<Follow>> getFromUserFollow(@RequestParam("email") String email) {
+    public List<Follow> getFromUserFollow(@RequestParam("email") String email) {
         return getFromUserFollowService.execute(email);
     }
 
