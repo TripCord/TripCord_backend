@@ -8,13 +8,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Follow {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
 
     @Column(name = "to_user")
