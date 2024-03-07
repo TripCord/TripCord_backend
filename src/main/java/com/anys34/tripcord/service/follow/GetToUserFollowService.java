@@ -21,6 +21,7 @@ public class GetToUserFollowService {
     @Transactional(readOnly = true)
     public List<FollowResponse> execute(String email) {
         if(email == null || userFacade.getUserByEmail(email) == null) throw UserNotFoundException.EXCEPTION;
+
         String user = userFacade.getUserByEmail(email).getEmail();
 
         List<FollowResponse> follows = followRepository.findAllByToUser(user)

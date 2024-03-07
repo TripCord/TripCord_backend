@@ -2,6 +2,7 @@ package com.anys34.tripcord.service.follow;
 
 import com.anys34.tripcord.domain.user.User;
 import com.anys34.tripcord.dto.follow.AddFollowRequest;
+import com.anys34.tripcord.exception.follow.FollowDuplicateException;
 import com.anys34.tripcord.exception.user.UserDuplicateException;
 import com.anys34.tripcord.exception.user.UserNotFoundException;
 import com.anys34.tripcord.facade.user.UserFacade;
@@ -25,6 +26,8 @@ public class PostFollowService {
 
         String toUser = userFacade.getCurrentUser().getEmail();
         User fromUser = userFacade.getUserByEmail(email);
+
+        if(followRepository.existsByToUserAndFromUser(toUser, fromUser)) throw FollowDuplicateException.EXCEPTION;
 
         followRepository.save(request.toEntity(toUser, fromUser));
     }

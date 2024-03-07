@@ -19,10 +19,13 @@ public class DeleteFollowService {
     @Transactional
     public void execute(String email) {
         if(email == null || userFacade.getUserByEmail(email) == null) throw UserNotFoundException.EXCEPTION;
+
         String toUser = userFacade.getCurrentUser().getEmail();
         User fromUser = userFacade.getUserByEmail(email);
+
         if(userFacade.getCurrentUser().getEmail().equals(email)) throw UserDuplicateException.EXCEPTION;
         if(!followRepository.existsByToUserAndFromUser(toUser, fromUser)) throw FollowNotFoundException.EXCEPTION;
+
         followRepository.deleteByToUserAndFromUser(toUser, fromUser);
     }
 }

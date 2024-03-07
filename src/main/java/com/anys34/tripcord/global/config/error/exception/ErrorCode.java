@@ -8,8 +8,9 @@ import org.springframework.http.HttpStatus;
 @AllArgsConstructor
 public enum ErrorCode {
 
-    USER_DUPLICATE(HttpStatus.BAD_REQUEST, "User Duplicate"), // 유저의 이메일이 중복됨
     USER_INCORRECT(HttpStatus.BAD_REQUEST, "User Incorrect"), // 이메일 혹은 비밀번호가 맞지 않음
+    USER_DUPLICATE(HttpStatus.BAD_REQUEST, "User Duplicate"), // 유저의 이메일이 중복됨
+    FOLLOW_DUPLICATE(HttpStatus.CONFLICT, "Follow Duplicate"), // 팔로우 중복
 
     EXPIRED_JWT(HttpStatus.UNAUTHORIZED, "Expired Jwt"), // 만료된 JWT
 
