@@ -24,7 +24,7 @@ public class FollowController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void addFollow(@RequestBody @Valid AddFollowRequest request) { addFollowService.execute(request.getEmail()); }
+    public void addFollow(@RequestBody @Valid AddFollowRequest request) { addFollowService.execute(request); }
 
     @GetMapping("/to")
     public List<FollowResponse> getToUserFollow(@RequestBody @Valid AddFollowRequest request) {
