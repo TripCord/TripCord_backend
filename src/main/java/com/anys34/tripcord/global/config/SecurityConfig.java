@@ -41,7 +41,10 @@ public class SecurityConfig {
 
         http.cors().and()
                 .authorizeRequests()
-                .requestMatchers("/user").authenticated()
+                .requestMatchers(
+                        "/user",
+                        "/follow/**"
+                ).authenticated()
                 .anyRequest().permitAll();
 
         http.exceptionHandling().authenticationEntryPoint(
