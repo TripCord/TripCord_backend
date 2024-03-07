@@ -1,7 +1,7 @@
 package com.anys34.tripcord.controller.follow;
 
-import com.anys34.tripcord.domain.follow.Follow;
 import com.anys34.tripcord.dto.follow.AddFollowRequest;
+import com.anys34.tripcord.dto.follow.FollowResponse;
 import com.anys34.tripcord.service.follow.DeleteFollowService;
 import com.anys34.tripcord.service.follow.GetFromUserFollowService;
 import com.anys34.tripcord.service.follow.GetToUserFollowService;
@@ -27,12 +27,12 @@ public class FollowController {
     public void addFollow(@RequestBody @Valid AddFollowRequest request) { addFollowService.execute(request.getEmail()); }
 
     @GetMapping("/to")
-    public List<Follow> getToUserFollow(@RequestBody @Valid AddFollowRequest request) {
+    public List<FollowResponse> getToUserFollow(@RequestBody @Valid AddFollowRequest request) {
         return getToUserFollowService.execute(request.getEmail());
     }
 
     @GetMapping("/from")
-    public List<Follow> getFromUserFollow(@RequestBody @Valid AddFollowRequest request) {
+    public List<FollowResponse> getFromUserFollow(@RequestBody @Valid AddFollowRequest request) {
         return getFromUserFollowService.execute(request.getEmail());
     }
 

@@ -1,6 +1,7 @@
 package com.anys34.tripcord.service.follow;
 
-import com.anys34.tripcord.domain.follow.Follow;
+import com.anys34.tripcord.domain.user.User;
+import com.anys34.tripcord.dto.follow.AddFollowRequest;
 import com.anys34.tripcord.exception.user.UserDuplicateException;
 import com.anys34.tripcord.exception.user.UserNotFoundException;
 import com.anys34.tripcord.facade.user.UserFacade;
@@ -16,9 +17,15 @@ public class PostFollowService {
     private final UserFacade userFacade;
 
     @Transactional
-    public void execute(String email) {
+    public void execute(AddFollowRequest request) {
+        String email = request.getEmail();
+
         if(userFacade.getUserByEmail(email) == null) throw UserNotFoundException.EXCEPTION;
         if(userFacade.getCurrentUser().getEmail().equals(email)) throw UserDuplicateException.EXCEPTION;
-        followRepository.save(new Follow(userFacade.getCurrentUser().getEmail(), userFacade.getUserByEmail(email)));
+
+        String toUser = userFacade.getCurrentUser().getEmail();
+        User fromUser = userFacade.getUserByEmail(email);
+
+        followRepository.save(request.toEntity(toUser, fromUser));
     }
 }
